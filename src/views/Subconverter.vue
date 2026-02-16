@@ -354,7 +354,7 @@ export default {
             {
                 label: "My_Own",
                 value: "https://raw.githubusercontent.com/alireza-rasouli/VPN/refs/heads/main/SUBCONFIG.ini"
-              }
+              },
               {
             label: "CM规则",
             options: [
@@ -1309,5 +1309,6 @@ export default {
   }
 };
 </script>
+
 
 
