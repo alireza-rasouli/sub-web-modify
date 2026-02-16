@@ -351,13 +351,15 @@ export default {
           { value: "https://api.v1.mk" },
         ],
         remoteConfig: [
-            {
-                label: "My_Own",
-                value: "https://raw.githubusercontent.com/alireza-rasouli/VPN/refs/heads/main/SUBCONFIG.ini"
-              },
               {
             label: "CM规则",
             options: [
+              
+              {
+                label: "IranC4U",
+                value: "https://raw.githubusercontent.com/alireza-rasouli/VPN/refs/heads/main/SUBCONFIG.ini"
+              },
+            
               {
                 label: "CM_Online 默认版 识别港美地区(与Github同步)",
                 value: "https://raw.githubusercontent.com/cmliu/ACL4SSR/main/Clash/config/ACL4SSR_Online.ini"
@@ -1309,6 +1311,7 @@ export default {
   }
 };
 </script>
+
 
 
 
