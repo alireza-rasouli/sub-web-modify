@@ -188,30 +188,14 @@
         </el-card>
       </el-col>
     </el-row>
-    <div class="subconverter-social-dock" aria-label="Page footer shortcut entry">
-      <button class="subconverter-social-btn" type="button" @click="goToProject" aria-label="GitHub" title="GitHub">
-        <svg viewBox="0 0 24 24" fill="none" class="subconverter-social-btn__icon" aria-hidden="true">
-          <path d="M9.2 19.1v-3.2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.8 1.9 1.4.9.4 1.8.3 2.5.1.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.1-3.1-.1-.3-.5-1.5.1-3 0 0 .9-.3 3.2 1.2a10.7 10.7 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.5.2 2.7.1 3 .7.8 1.1 1.8 1.1 3.1 0 4.4-2.7 5.3-5.3 5.7.4.4.8 1 .8 2.1v3.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M8.9 18.8c-3.5 1.1-6-1.4-6-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-        </svg>
-      </button>
-      <button class="subconverter-social-btn" type="button" @click="gotoTgChannel" aria-label="Telegram" title="Telegram">
-        <svg viewBox="0 0 24 24" fill="none" class="subconverter-social-btn__icon" aria-hidden="true">
-          <path d="M21 4.5 3.8 11.2c-.8.3-.8 1.4 0 1.6l4.1 1.4 1.6 5c.2.8 1.2 1 1.7.4l2.4-2.7 4.2 3.1c.7.5 1.7.1 1.9-.8L22 5.8c.2-.9-.5-1.7-1.4-1.3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-          <path d="m8 14 9.1-6.7M9.5 18.5 11 14l7.6-6.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <button class="subconverter-social-btn" type="button" @click="gotoYouTuBe" aria-label="YouTube" title="YouTube">
-        <svg viewBox="0 0 24 24" fill="none" class="subconverter-social-btn__icon" aria-hidden="true">
-          <rect x="3.5" y="6" width="17" height="12" rx="4.2" stroke="currentColor" stroke-width="1.7"/>
-          <path d="m10 9.4 5.5 2.7-5.5 2.7V9.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-        </svg>
-      </button>
+    
+    <div class="subconverter-social-dock" aria-label="Theme settings toggle entry">
       <button class="subconverter-social-btn subconverter-social-btn--theme" type="button" @click="change" aria-label="Switch Theme">
         <i id="rijian" class="el-icon-sunny subconverter-theme-toggle-icon"></i>
         <i id="yejian" class="el-icon-moon subconverter-theme-toggle-icon"></i>
       </button>
     </div>
+
     <el-dialog title="Please select a video tutorial to watch" :visible.sync="centerDialogVisible" custom-class="subconverter-dialog" :show-close="true" width="420px" top="22vh"
       center>
       <div label-width="0px" style="text-align: center">
@@ -298,7 +282,6 @@
   </div>
 </template>
 <script>
-const project = process.env.VUE_APP_PROJECT
 const configScriptBackend = process.env.VUE_APP_CONFIG_UPLOAD_BACKEND + '/api.php'
 const remoteConfigSample = process.env.VUE_APP_SUBCONVERTER_REMOTE_CONFIG
 const scriptConfigSample = process.env.VUE_APP_SCRIPT_CONFIG
@@ -308,9 +291,6 @@ const shortUrlBackend = process.env.VUE_APP_MYURLS_DEFAULT_BACKEND + '/short'
 const configUploadBackend = process.env.VUE_APP_CONFIG_UPLOAD_BACKEND + '/sub.php'
 const basicVideo = process.env.VUE_APP_BASIC_VIDEO
 const advancedVideo = process.env.VUE_APP_ADVANCED_VIDEO
-const tgBotLink = process.env.VUE_APP_BOT_LINK
-const yglink = process.env.VUE_APP_YOUTUBE_LINK
-const bzlink = process.env.VUE_APP_BILIBILI_LINK
 export default {
   data() {
     return {
@@ -446,7 +426,6 @@ export default {
       uploadFilter: "",
       uploadScript: "",
       uploadConfig: "",
-      myBot: tgBotLink,
       filterConfig: filterConfigSample,
       scriptConfig: scriptConfigSample,
       sampleConfig: remoteConfigSample
@@ -528,18 +507,6 @@ export default {
     },
     onCopy() {
       this.$message.success("Copied to clipboard");
-    },
-    goToProject() {
-      window.open(project);
-    },
-    gotoTgChannel() {
-      window.open(tgBotLink);
-    },
-    gotoBiliBili() {
-      window.open(bzlink);
-    },
-    gotoYouTuBe() {
-      window.open(yglink);
     },
     gotoBasicVideo() {
       this.$alert("Don't forget to follow our updates!", {
@@ -917,7 +884,6 @@ export default {
 };
 </script>
 <style>
-/* Style section remains unchanged to preserve UI structure */
 .light-mode .subconverter-page {
   --page-surface: #d8e0e5;
   --page-grid: rgba(51, 65, 85, 0.05);
@@ -1273,11 +1239,6 @@ export default {
   transform: translateY(-2px);
   border-color: var(--accent-outline);
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
-}
-
-.subconverter-social-btn__icon {
-  width: 20px;
-  height: 20px;
 }
 
 .subconverter-theme-toggle-icon {
